@@ -39,8 +39,8 @@ const config = {
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',
-    path: path.resolve(process.cwd(), 'dist/static'),
-    publicPath: '/static/'
+    path: path.resolve(process.cwd(), 'dist'),
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.css'],
@@ -77,7 +77,8 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'SustainaBin',
-      filename: '../index.html',
+      filename: 'index.html',
+      template: 'src/template.html',
       alwaysWriteToDisk: true
     }),
     new HtmlWebpackHarddiskPlugin()
