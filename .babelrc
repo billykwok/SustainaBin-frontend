@@ -1,0 +1,52 @@
+{
+  "presets": ["env", "stage-0", "react"],
+  "compact": true,
+  "minified": true,
+  "env": {
+    "development": {
+      "presets": [["env", { "modules": false }], "stage-0", "react"],
+      "plugins": [
+        "react-hot-loader/babel",
+        "macros",
+        ["transform-runtime", { "polyfill": false }],
+        "polished",
+        ["styled-components", { "ssr": true, "displayName": true }]
+      ]
+    },
+    "production": {
+      "presets": [["env", { "modules": false }], "stage-0", "react"],
+      "plugins": [
+        "macros",
+        ["transform-runtime", { "polyfill": false }],
+        ["transform-react-remove-prop-types", { "removeImport": true }],
+        "transform-react-pure-class-to-function",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "closure-elimination",
+        "polished",
+        ["styled-components", { "ssr": true, "displayName": false }]
+      ]
+    },
+    "server": {
+      "presets": ["env", "stage-0", "react"],
+      "plugins": [
+        "macros",
+        "transform-runtime",
+        ["styled-components", { "ssr": true, "displayName": true }]
+      ]
+    },
+    "node": {
+      "presets": [
+        ["env", { "targets": { "node": "current" } }],
+        "stage-0",
+        "react"
+      ],
+      "plugins": [
+        "macros",
+        "transform-runtime",
+        "dynamic-import-node",
+        ["styled-components", { "ssr": true, "displayName": false }]
+      ]
+    }
+  }
+}
