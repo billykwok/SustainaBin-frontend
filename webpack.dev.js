@@ -33,7 +33,6 @@ const config = {
   devtool: 'eval',
   entry: [
     'react-hot-loader/patch',
-    // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&quiet=false&noInfo=false',
     path.resolve(process.cwd(), 'src/index.jsx')
   ],
   output: {
@@ -63,6 +62,11 @@ const config = {
         use: [
           { loader: 'file-loader', options: { name: '[path][name].[ext]' } }
         ]
+      },
+      {
+        test: /\.mp3$/i,
+        include: path.resolve(process.cwd(), 'src/assets/audio'),
+        loader: 'file-loader'
       }
     ]
   },

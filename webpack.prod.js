@@ -5,6 +5,7 @@ const DupCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const threadLoader = require('thread-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const env = process.env;
 
@@ -34,10 +35,10 @@ const config = {
   devtool: 'nosources-source-map',
   entry: path.resolve(process.cwd(), 'src/index.jsx'),
   output: {
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
-    path: path.resolve(process.cwd(), 'dist/static'),
-    publicPath: '/static/'
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    path: path.resolve(process.cwd(), 'dist'),
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.css'],
@@ -61,6 +62,11 @@ const config = {
           { loader: 'file-loader', options: { name: '[hash].[ext]' } },
           'img-loader'
         ]
+      },
+      {
+        test: /\.mp3$/,
+        include: path.resolve(process.cwd(), 'src/assets/audio'),
+        loader: 'file-loader'
       }
     ]
   },
@@ -98,8 +104,11 @@ const config = {
     new webpack.optimize.AggressiveMergingPlugin(),
     new HtmlWebpackPlugin({
       title: 'SustainaBin',
-      filename: '../index.html'
-    })
+      filename: 'index.html',
+      template: 'src/template.html',
+      alwaysWriteToDisk: true
+    }),
+    new HtmlWebpackHarddiskPlugin()
   ]
 };
 

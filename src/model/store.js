@@ -4,6 +4,8 @@ import { createStore } from 'redux';
 import initialState from './initialState';
 import reducers from './reducers';
 
-console.log(reducers);
-
-export default createStore(reducers, initialState);
+export default createStore(
+  reducers,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
