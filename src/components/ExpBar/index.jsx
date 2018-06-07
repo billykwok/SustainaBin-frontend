@@ -20,7 +20,7 @@ const Text = styled.div`
 `;
 
 const Bar = styled.div`
-  width: ${props => props.exp}%;
+  width: ${props => Math.min(100, props.exp)}%;
   height: 100%;
   background-color: #0096ff;
   transition: width ${props => (props.full ? 0 : 1)}s;
