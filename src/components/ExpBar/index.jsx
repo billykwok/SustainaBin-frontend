@@ -38,7 +38,7 @@ const ExpBar = ({ stats }: PropsType) => {
     <Container>
       <Text>Exp</Text>
       <Text align="right">
-        {stats.exp} / {stats.level}
+        {Math.min(stats.level, stats.exp)} / {stats.level}
       </Text>
       <BarContainer>
         <Bar exp={(stats.exp * 100) / stats.level} full={stats.exp === 0} />
