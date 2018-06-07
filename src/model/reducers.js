@@ -2,9 +2,11 @@
 import { combineReducers } from 'redux';
 
 import {
-  UPDATE_EMOTION,
   INCREMENT_EXP,
   DECREMENT_EXP,
+  BE_HAPPY,
+  BE_SAD,
+  BE_NORMAL,
   UPDATE_CHARACTER
 } from './actions';
 import initialState from './initialState';
@@ -12,13 +14,18 @@ import store from './store';
 import pathToCorrect from '../assets/audio/correct.mp3';
 import pathToIncorrect from '../assets/audio/incorrect.mp3';
 import pathToLevelUp from '../assets/audio/levelup.mp3';
+import { HAPPY, SAD, NORMAL } from './emotions';
 
 const START_UPGRADING = 'START_UPGRADING';
 
 function emotion(state: any = initialState.emotion, action: any) {
   switch (action.type) {
-    case UPDATE_EMOTION:
-      return action.emotion;
+    case BE_HAPPY:
+      return HAPPY;
+    case BE_SAD:
+      return SAD;
+    case BE_NORMAL:
+      return NORMAL;
     default:
       return state;
   }

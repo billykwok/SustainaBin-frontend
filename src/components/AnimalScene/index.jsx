@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import Background from '../Background';
 import Bear from '../Bear';
 import LevelIndicator from '../LevelIndicator';
 import ExpBar from '../ExpBar';
@@ -25,10 +26,12 @@ const CharacterName = styled.div`
   text-align: center;
   font-size: 48px;
   font-weight: bold;
+  color: #fff;
 `;
 
 const AnimalScene = ({ stats, emotion }: { stats: any, emotion: string }) => (
   <Container>
+    <Background />
     <LevelIndicator />
     <Bear level={stats.level} emotion={emotion} />
     <ExpBar />

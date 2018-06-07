@@ -8,8 +8,10 @@ import Stage2Body from './Stage2Body';
 import Stage3Body from './Stage3Body';
 
 const SVG = styled.svg`
-  margin: auto;
-  padding-bottom: 64px;
+  position: absolute;
+  left: 50%;
+  margin-left: -210px;
+  top: 48px;
 `;
 
 type PropsType = { level: number, emotion: string };
